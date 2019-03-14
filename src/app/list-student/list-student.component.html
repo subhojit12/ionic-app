@@ -1,0 +1,37 @@
+
+
+         <ion-header>
+            <ion-toolbar>
+                <ion-buttons slot="start">  
+                    <ion-menu-button></ion-menu-button>
+                  </ion-buttons>
+                  <ion-title>
+                      List Of All Student
+                  </ion-title>
+                </ion-toolbar>
+            </ion-header>
+            <ion-button color="primary" style="float:right" (click)="deleteAllStudent(students)" sise="small"><ion-icon name="trash"></ion-icon>DeleteAll</ion-button>
+            
+                <ion-content col-mad-6>     
+              
+                <ion-card  *ngFor="let s of list" >
+                  <ion-button color="primary"  (click)="onEdit(s)" sise="medium"><ion-icon name="create"></ion-icon></ion-button>
+                  <ion-card-header>
+                    <ion-card-title ><ion-icon name="person"></ion-icon> Name:{{s.firstName}} {{s.lasttName}}</ion-card-title>
+                    <ion-card-subtitle><ion-icon name="no"></ion-icon>RollNo:{{s.rollno}}</ion-card-subtitle>
+                    <ion-card-subtitle><ion-icon name="calender"></ion-icon>DOB:{{s.dob}}</ion-card-subtitle>
+                    <ion-card-subtitle><ion-icon name="person"></ion-icon>Teacher: {{s.teachername}}</ion-card-subtitle>
+                   
+                    <ion-card-subtitle><ion-icon name="calender"></ion-icon>Class: {{s.class}}</ion-card-subtitle>
+                    <ion-card-subtitle><ion-icon name="book"></ion-icon>Subject:{{s.subject}}</ion-card-subtitle>
+                  </ion-card-header>
+                  <ion-card-content><ion-icon name="home"></ion-icon>
+                      {{s.address}}
+                  </ion-card-content>
+                  <ion-button color="danger" slot="end" style="float:right" (click)="deleteStudent(s)"><ion-icon name="trash"></ion-icon></ion-button>
+                </ion-card>
+              
+                </ion-content>
+           
+         
+                

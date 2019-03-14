@@ -1,0 +1,32 @@
+
+         <ion-header>
+            <ion-toolbar>
+                <ion-buttons slot="start">  
+                    <ion-menu-button></ion-menu-button>
+                  </ion-buttons>
+                  <ion-title>
+                      Dashboard
+                  </ion-title>
+                </ion-toolbar>
+            </ion-header>
+            <ion-button color="primary" style="float:right" (click)="deleteAllCustomer(customers)" sise="small"><ion-icon name="trash"></ion-icon>DeleteAll</ion-button>
+            
+                <ion-content>     
+              
+                <ion-card  *ngFor="let c of list" >
+                  <ion-button color="primary"  (click)="onEdit(c)" sise="medium"><ion-icon name="create"></ion-icon></ion-button>
+                  <ion-card-header>
+                    <ion-card-title ><ion-icon name="person"></ion-icon> Name:{{c.name}}</ion-card-title>
+                    <ion-card-subtitle><ion-icon name="mail"></ion-icon>{{c.email}}</ion-card-subtitle>
+                    <ion-card-subtitle><ion-icon name="tablet-portrait"></ion-icon>{{c.phone}}</ion-card-subtitle>
+                  </ion-card-header>
+                  <ion-card-content><ion-icon name="home"></ion-icon>
+                      {{c.address}}
+                  </ion-card-content>
+                  <ion-button color="danger" slot="end" style="float:right" (click)="deleteCustomer(c)"><ion-icon name="trash"></ion-icon>Delete</ion-button>
+                </ion-card>
+              
+                </ion-content>
+           
+         
+                
