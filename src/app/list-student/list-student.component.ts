@@ -12,10 +12,11 @@ export class ListStudentComponent implements OnInit {
   list=[];
   student: any = { rollno:0, firstName:'', lasttName:'', address:'', class:'', subject:'', teachername:'', dob:'',}
   constructor(private studentService:StudentService, private router:Router ) { }
-
+ // teacher=[];
   ngOnInit() {
 
     this.list=this.studentService.getStudents();
+   // this.list=this.studentService.getTeacherByStudent(this.teacher);
   }
   deleteAllStudent(student){
     this.studentService.deleteAllStudent(student);
@@ -29,4 +30,12 @@ export class ListStudentComponent implements OnInit {
   onEdit(s){
     this.router.navigate(['/editstudent/'+s.rollno]);
   }
+  onTeacherChange(s){
+    alert("heheh")
+    console.log("selected Teacher Name:"+s.teachername);
+   this.studentService.getTeacherByStudent(s);
+  }
+
+
+
 }

@@ -20,6 +20,9 @@ export class StudentService {
      
     
     getStudents(){
+      if(localStorage.getItem('students')!=null)
+      this.students=JSON.parse(localStorage.getItem('students'))
+
       return this.students;
     }
 
@@ -31,24 +34,27 @@ export class StudentService {
           this.students[i] = student;
           break;
         }  
+        localStorage.setItem('students', JSON.stringify(this.students));
       }
       if(!updated){
         student.id = Math.round(Math.random()*1000000);
          this.students.push(student);
        }
+       localStorage.setItem('students', JSON.stringify(this.students));
        
     }
 
     deleteAllStudent(id){
       for(var i = 0; i< this.students.length; i++){
         this.students.splice(i, this.students.length);
-        
+        localStorage.setItem('students', JSON.stringify(this.students));
       }
     }
     deleteStudent(c){
       for(var i = 0; i< this.students.length; i++){
         if(c.rollno == this.students[i].rollno){
           this.students.splice(i, c.rollno);
+          localStorage.setItem('students', JSON.stringify(this.students));
         }
         
       }
@@ -61,5 +67,14 @@ export class StudentService {
       }
     }
     }
+    getTeacherByStudent(teachername){
+      for(var i=0;i<this.students.length;i++){
+        if(this.students[i].teachername==teachername){
+          return this.students
+      }else{
+        return null;
+      }
+ }
 
+}
 }
