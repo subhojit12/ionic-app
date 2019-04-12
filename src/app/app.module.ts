@@ -18,6 +18,8 @@ import { StudentComponent } from './student/student.component';
 import { AddStudentComponent } from './add-student/add-student.component';
 import { ListStudentComponent } from './list-student/list-student.component';
 import { EditStudentComponent } from './edit-student/edit-student.component';
+import { HttpClientModule }    from '@angular/common/http';
+import { Camera } from '@ionic-native/camera/ngx';
 
 @NgModule({
   declarations: [AppComponent,
@@ -32,11 +34,12 @@ import { EditStudentComponent } from './edit-student/edit-student.component';
     EditStudentComponent
   ],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(),FormsModule, AppRoutingModule],
+  imports: [BrowserModule, IonicModule.forRoot(),FormsModule, AppRoutingModule,HttpClientModule],
   providers: [
     StatusBar,
     SplashScreen,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    Camera
   ],
   bootstrap: [AppComponent]
 })

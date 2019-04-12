@@ -15,6 +15,9 @@ list=[];
 
   ngOnInit() {
     this.list=this.customerService.getCustomers();
+    // this.customerService.getDBCustomers();
+    this.customerService.getRemoteCustomers().subscribe((result) => {this.list = result;});
+  	// this.list = this.customerService.getCustomers();
   }
 
   deleteAllCustomer(customer){
@@ -23,7 +26,10 @@ list=[];
 
   }
   deleteCustomer(c){
-    this.customerService.deleteCustomer(c);
+    // this.customerService.deleteCustomer(c);
+    this.customerService.deleteRemoteCustomer(c).subscribe((e) => {
+      this.customerService.getRemoteCustomers().subscribe((result) => {this.list = result;});
+    });
 
   }
  onEdit(c){

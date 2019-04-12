@@ -14,7 +14,7 @@ import { EditStudentComponent } from './edit-student/edit-student.component';
 
 
 const routes: Routes = [
-  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
   { path: 'home', loadChildren: './home/home.module#HomePageModule' },
   {path:'login', component:LoginComponent},
   {path:'dashboard', component:DashboardComponent},

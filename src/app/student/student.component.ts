@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 
 @Component({
   selector: 'app-student',
@@ -14,7 +15,7 @@ export class StudentComponent implements OnInit {
     'person-add',
   ];
   public items: Array<{ title: string; note: string; icon: string }> = [];
-  constructor(private router: Router) {
+  constructor(private router: Router,private camera: Camera) {
   	this.items.push({
   		title: 'Student List',
         note:'/list-student',

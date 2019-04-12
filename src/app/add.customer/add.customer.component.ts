@@ -12,12 +12,20 @@ export class AddCustomerComponent implements OnInit {
   constructor(private customerService:CustomerService,private router:Router ) { }
   customers = this.customerService.getCustomers();
   customer = { id:0, name:'', email:'', address:'', phone:''}
-  ngOnInit() {}
+  ngOnInit() {
+    this.customers=this.customerService.getCustomers();
+    // this.customerService.getDBCustomers();
+    this.customerService.getRemoteCustomers().subscribe((result) => {this.customers = result;});
+  }
 
   addUpdateCustomer(customer){
-    this.customerService.addUpdateCustomer(customer);
-    this.router.navigate(['/list-customer'])
-    this.customerService.getCustomers();
+    // this.customerService.addUpdateCustomer(customer);
+    this.customerService.addRemoteCustomer(customer).subscribe((e) => {
+      // this.customerService.getRemoteCustomers().subscribe((result) => {this.customers = result;});
+      this.router.navigate(['/list-customer']);
+    });
+    
+    // this.customerService.getCustomers();
   }
 
   getCustomertById(id){
